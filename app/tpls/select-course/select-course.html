@@ -1,0 +1,85 @@
+
+<div class="w-container ">
+  <div class="select-class-list ng-cloak" ng-cloak>
+    <div class="w-select-container">
+      <label class="control-label pull-left">教学基地：</label>
+      <select id="selectAddress" class="form-control" change-select>
+        <option value="">--请选择--</option>
+        <option>深圳大学师范学院基地</option>
+        <option>深圳职业技术学院基地</option>
+        <option>深圳市宝安职业技术学校基地</option>
+        <option>红岭中学基地</option>
+        <option>成人教育中心基地</option>
+        <option>信息学院基地</option>
+        <option>教育学院基地</option>
+        <option>红岭中学基地</option>
+        <option>海湾中学基地</option>
+        <option>南外文华基地</option>
+        <option>桂园小学基地</option>
+        <option>博伦职校基地</option>
+        <option>盐田外国语小学基地</option>
+      </select>
+    </div>
+    <div  ng-repeat="item in courses"  class="content">
+      <div>
+        <b ng-if="item.deliveryMode == 'MS'" style="color: #77BA4F">面授<img src="/szwx-project/app/images/011.png" width="16px" height="16px" style="margin-top: -2px"/></b>
+        <b ng-if="item.deliveryMode == 'YC'" style="color: #337ab7">远程<img src="/szwx-project/app/images/010.png" width="16px" height="16px" style="margin-top: -2px"/></b>
+        <div ng-if="item.choiceStatus == '-1'">
+          <button ng-click="selectCourse(item.semeCourseId, item.planIssue)" class="select-btn1 btn btn-sm btn-primary pull-right">我要选课</button>
+        </div>
+        <div ng-if="item.choiceStatus == '1'">
+          <button ng-click="selectCourse(item.semeCourseId, item.planIssue)" class="disabled select-btn1 btn btn-sm btn-default pull-right">受理中</button>
+        </div>
+        <div ng-if="item.choiceStatus == '0'">
+          <button ng-click="cancelCourse(item.semeCourseId)" class="select-btn1 btn btn-sm btn-danger pull-right">我要退课</button>
+        </div>
+        <div ng-if="item.choiceStatus == '2'">
+          <button  class="disabled select-btn1 btn btn-sm btn-success pull-right">选课成功</button>
+        </div>
+      </div>
+      <a href="#/course/{{item.semeCourseId}}">
+        <b style="color: #337ab7">{{item.courseName}}</b><br/>
+      </a><br/>
+      <span>学习费用：{{item.fee}}</span>
+      <span style="margin-left: 15%">学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时：{{item.classHour}}</span><br/>
+      <span>学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;分：{{item.credit}}</span>
+      <span ng-if="item.deliveryMode == 'YC'">上课地点：远程课程,无需面授 </span>
+      <span style="margin-left: 17%">上课地点：{{item.classRoomName}}</span><br/>
+      <span>开通时间-结束时间：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{item.classStartTime | date: 'yyyy-MM-dd'}}~{{item.classEndTime | date: 'yyyy-MM-dd'}}</span>
+    </div>
+    <div ng-show="ifMore && courses.length > 0" class="w-bottom-load" ng-click="load(openUnit)">加载更多...</div>
+    <div ng-show="!ifMore" class="w-bottom-load">没有更多数据了</div>
+  </div>
+</div>
+
+<div style="margin-top: 150px" class="modal fade" id="selectResult" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel1">选课结果</h4>
+      </div>
+      <div class="modal-body modal-body-select"></div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">我知道了</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="margin-top: 150px" class="modal fade" id="cancelResult" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel2">退课确认</h4>
+      </div>
+      <div class="modal-body modal-body-select">你确定要退课吗？</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+      </div>
+    </div>
+  </div>
+</div>
+

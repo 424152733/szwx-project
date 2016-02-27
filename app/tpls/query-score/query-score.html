@@ -1,0 +1,27 @@
+
+<div  class="w-container">
+    <div class="w-select-container">
+      <label class="control-label pull-left">期号：</label>
+      <select  class="form-control" change-select>
+        <option ng-repeat="item in planInfos" value="{{item.value}}">{{item.name}}</option>
+      </select>
+    </div>
+    <div ng-if="grades.length > 0" id="score-list">
+      <div ng-repeat="grade in grades" class="query-score-list">
+        <img src="/szwx-project/app/images/08.png" width="16px" height="16px"/>
+        <b style="color: #8B8B8C">{{grade.courseName}}</b><br/>
+        <b style="margin-top: 10px;">学&nbsp;&nbsp;号:{{grade.studentNumber}}</b><br/>
+        <b style="display:inline-block;width: 20%">学习课时:{{grade.classHour}}</b>
+        <b style="display:inline-block;margin-left: 25%">获得学时:{{grade.classHour}}</b><br/>
+        <b style="display:inline-block;width: 20%">考试成绩:{{grade.examResult}}</b>
+        <b ng-if="grade.totalResult =='合格'" style="display:inline-block;margin-left: 25%;font-size: 16px;">总成绩:<b style="color:#2F87FF">{{grade.totalResult}}</b></b><br/>
+        <b ng-if="grade.totalResult !='合格'" style="display:inline-block;margin-left: 25%;font-size: 16px;">总成绩:<b style="color:red">{{grade.totalResult}}</b></b><br/>
+      </div>
+    </div>
+    <div ng-if="grades.length == 0">
+      <h1>你没有这期的选课</h1>
+    </div>
+  </div>
+
+
+

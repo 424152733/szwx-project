@@ -1,0 +1,25 @@
+
+<div style="margin-top: 70px">
+    <div ng-if="courseList.length > 0">
+      <div ng-repeat="item in courseList" class="w-container-list course-management-info">
+        <p><b>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：</b>远程(男)</p>
+        <p><b>学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号：</b>{{item.studentNumber}}</p>
+        <p><b>手&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;机：</b>{{item.mobileNo}}</p>
+        <p><b>课&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号：</b>{{item.courseNo}}</p>
+        <p><b>课程名称：</b>{{item.courseName}}</p>
+        <p>
+          <b>选课方式：</b>
+          <span ng-if="item.isRelearn == 0">初选</span>
+          <span ng-if="item.isRelearn == 1" style="color: red">重修</span>
+        </p>
+        <p><b>学时/学分/总学分：</b>{{item.classHour}}/{{item.totalClassHour}}/{{item.sumHours}}</p>
+        <p><b>学费/书本费/其他：</b>{{item.fee}}/{{item.bookFee}}/{{item.otherFee}}</p>
+        <div>
+          <button class="btn btn-primary btn-sm pull-left" modal-btn data-modal="agree-modal" ng-click="getInfo(item)">通过</button>
+        </div>
+      </div>
+    </div>
+    <div ng-if="courseList.length === 0">
+      <h3 class="text-center" style="margin-top: 200px">无待审核选课数据</h3>
+    </div>
+</div>

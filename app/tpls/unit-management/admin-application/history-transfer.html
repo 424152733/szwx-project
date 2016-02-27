@@ -1,0 +1,28 @@
+
+<div style="margin-top: 70px" ng-controller="aaController">
+    <div ng-repeat="item in historyList" class=" w-container-list">
+        <div class="admin-application-info">
+            <div>
+                <img src="/szwx-project/app/images/header.jpg" width="70%" height="80px"/><br/>
+                <span>{{item.name}}</span>
+            </div>
+            <div ng-switch="item.status">
+                <p>
+                    {{item.applyReson}}
+                </p>
+                <p ng-switch-when="1">
+                  审批状态:同意
+                </p>
+                <p ng-switch-when="2">
+                  审批状态:拒绝
+                </p>
+                <p ng-switch-default>
+                  审批状态:审核中
+                </p>
+                <p>
+                    {{item.applyDate | date: 'yyyy-MM-dd'}}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

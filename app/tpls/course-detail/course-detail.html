@@ -1,0 +1,59 @@
+
+<div class="w-container" ng-cloak>
+  <div class="course-detail">
+    <p><b>课&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号：</b>{{semeCourse.courseNo}}</p>
+    <p><b>课程名称：</b>{{semeCourse.courseName}}</p>
+    <p><b>学习方式：</b>
+      <span ng-if="semeCourse.deliveryMode == 'MS'">面授</span>
+      <span ng-if="semeCourse.deliveryMode == 'YC'">远程</span>
+    </p>
+    <p><b>学科类别：</b>{{semeCourse.subjectName}}</p>
+    <p><b>科目类别：</b>{{semeCourse.courseTypeName}}</p>
+    <p><b>面向对象：</b>{{semeCourse.coutseSeriesName}}</p>
+    <p>
+      <b>限选学科：</b>
+      <span ng-if="limitedSubjectList.length">
+        <span ng-repeat="item in limitedSubjectList">
+          <span ng-if="subjectList.length">
+            <span ng-repeat="item1 in subjectList">
+              <span ng-if="item.code === item1.value">
+                <span>{{item1.name}}</span>
+              </span>
+            </span>
+          </span>
+        </span>
+      </span>
+      <span ng-if="!limitedSubjectList.length">
+        <span>不限选</span>
+      </span>
+    </p>
+    <p><b>上课教室：</b>{{semeCourse.classRoomName}}</p>
+    <p>
+      <b>上课时间：</b>
+      <span class="col-xs-offset-2 col-xs-10" ng-repeat="item in times">
+        {{item}}
+      </span>
+    </p>
+    <div style="clear: both"></div>
+    <p style="margin-top: 10px"><b>费用信息：</b>学费{{semeCourse.fiFirstLearnFee}} 教材费{{semeCourse.fiBookFee}} 其他费用{{semeCourse.otherFee}}</p>
+    <p>
+      <b>课程简介：</b><br/>
+      　<span ng-if="zjList.length">
+            {{zjList[0].remark}}
+        </span>
+    </p>
+    <div ng-switch="choiceStatus">
+      <div ng-switch-when="null">
+        <a  class="btn btn-lg btn-white"  ng-click="selectCourse(semeCourse.sid, semeCourse.planIssue)" style="width: 100%">我要选课</a>
+      </div>
+      <div ng-switch-when="0">
+        <a  class="btn btn-lg btn-white"  ng-click="cancelCourse(semeCourse.sid)" style="width: 100%">选课成功,再次点击取消</a>
+      </div>
+      <div ng-switch-default>
+        <a  class="btn btn-lg btn-black"  style="width: 100%">选课成功</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+

@@ -1,0 +1,9 @@
+
+<div class="w-container" ng-controller="csController">
+    <ul  class="nav nav-pills w-management-title">
+        <p><b>单 位 管 理</b> > <span>转 校 管 理</span></p>
+        <li style="width: 49%" class="w-nav-active" tabs><a ng-click="transferManagement(1)" ui-sref="changeSchool.inManager">转入管理</a></li>
+        <li style="width: 50%" class="w-nav-default" tabs><a ng-click="transferManagement(0)" ui-sref="changeSchool.outManager">转出管理</a></li>
+    </ul>
+    <div ui-view="content"></div>
+</div>

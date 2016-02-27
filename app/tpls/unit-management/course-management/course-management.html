@@ -1,0 +1,44 @@
+
+<div class="w-container" ng-controller="cmController" ng-cloak>
+  <ul class="nav nav-pills w-management-title">
+    <p><b>单 位 管 理</b> > <span>选 课 管 理</span></p>
+    <li style="width: 29%" class="w-nav-active" tabs><a ui-sref="courseManagement.pendingApproval" ng-click="courseManagerList(0)">待审批</a></li>
+    <li style="width: 40%" class="w-nav-default" tabs><a ui-sref="courseManagement.payment" ng-click="courseManagerList(3)">已通过待缴费</a></li>
+    <li style="width: 29%" class="w-nav-default" tabs><a ui-sref="courseManagement.rejected" ng-click="courseManagerList(8)">已拒绝</a></li>
+  </ul>
+    <div ui-view="content"></div>
+    <div id="agree-modal" style="margin-top: 150px" class="modal fade"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel1">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel1">操作确认</h4>
+                </div>
+                <div class="modal-body">
+                    确认审核通过？
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button  type="button" class="btn btn-primary" data-dismiss="modal" ng-click="updateStatus(1)">确认</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="reject-modal" style="margin-top: 150px" class="modal fade"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel2">操作确认</h4>
+                </div>
+                <div class="modal-body">
+                    确认审核拒绝？
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button  type="button" class="btn btn-primary" data-dismiss="modal" ng-click="updateStatus(8)">确认</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en" ng-app="sdApp">
+<head>
+  <meta charset="UTF-8" >
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+  <meta name = "format-detection" content="telephone = no" />
+  <title>深大继续教育</title>
+  <link rel="stylesheet" href="../framework/bootstrap/dist/css/bootstrap.css"/>
+  <link rel="stylesheet" href="../framework/weui/dist/style/weui.css"/>
+  <link rel="stylesheet" href="../framework/animate/animate.css"/>
+  <link rel="stylesheet" href="styles/css/szwx-project.css"/>
+</head>
+<body ng-controller="appCtrl">
+<div ui-view></div>
+<div ng-include="'tpls/directive-template/loading.tpl.html'"></div>
+</body>
+<script src="../framework/angular/angular.min.js"></script>
+<script src="../framework/angular-ui-router/release/angular-ui-router.min.js"></script>
+<script src="../framework/angular-route/angular-route.min.js"></script>
+<script src="../framework/jquery/dist/jquery.min.js"></script>
+<script src="../framework/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../framework/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js"></script>
+<script src="../framework/bootstrap-datetimepicker/bootstrap-datetimepicker.zh-CN.js"></script>
+<script src="scripts/app.js"></script>
+<script src="scripts/controllers/admin-application.js"></script>
+<script src="scripts/controllers/change-school.js"></script>
+<script src="scripts/controllers/course-detail.js"></script>
+<script src="scripts/controllers/course-management.js"></script>
+<script src="scripts/controllers/elective-information.js"></script>
+<script src="scripts/controllers/new-assessment.js"></script>
+<script src="scripts/controllers/personal-center.js"></script>
+<script src="scripts/controllers/photo-audit.js"></script>
+<script src="scripts/controllers/query-schedule.js"></script>
+<script src="scripts/controllers/query-score.js"></script>
+<script src="scripts/controllers/select-course.js"></script>
+<script src="scripts/controllers/unit-management.js"></script>
+<script src="scripts/directive/animate-directive.js"></script>
+<script src="scripts/directive/modal-directive.js"></script>
+<script src="scripts/directive/select-directive.js"></script>
+<script src="scripts/directive/tabs-directive.js"></script>
+<script src="scripts/services/ajaxService.js"></script>
+<script src="scripts/services/common.js"></script>
+<script src="scripts/services/config.js"></script>
+</html>

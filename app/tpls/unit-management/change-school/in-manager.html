@@ -1,0 +1,56 @@
+<div style="margin-top: 70px">
+  <div ng-if="inManageList.length > 0">
+    <div ng-repeat="item in inManageList" class="w-container-list change-school-list">
+      <p ng-if="item.sex == 1"><b>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：</b>{{item.userName}}(男)</p>
+      <p ng-if="item.sex == 0"><b>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：</b>{{item.userName}}(女)</p>
+      <p><b>学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号：</b>{{item.applyId}}</p>
+      <p><b>手&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;机：</b>{{item.mobile}}</p>
+      <p><b>转出学校：</b>{{item.outOrgName}}</p>
+      <p><b>转入学校：</b>{{item.inOrgName}}</p>
+      <p><b>申请日期：</b>{{item.applyTime | date: "yyyy-MM-dd"}}</p>
+      <div>
+        <button  class="btn btn-primary btn-sm pull-left" data-modal="in-agree-modal" modal-btn ng-click="getUser(item)">同意</button>
+        <button  class="btn btn-danger btn-sm pull-right" data-modal="in-reject-modal" modal-btn ng-click="getUser(item)">拒绝</button>
+      </div>
+    </div>
+    <div class="w-bottom-load">加载更多</div>
+  </div>
+  <div ng-if="inManageList.length == 0">
+    <h3 class="text-center" style="margin-top: 200px">无审批数据</h3>
+  </div>
+</div>
+
+<div id="in-agree-modal" style="margin-top: 150px" class="modal fade"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel1">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel1">操作确认</h4>
+            </div>
+            <div class="modal-body">
+                确认审核同意？
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button  type="button" class="btn btn-primary" data-dismiss="modal" ng-click="audit(1)">确认</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="in-reject-modal" style="margin-top: 150px" class="modal fade"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel2">操作确认</h4>
+            </div>
+            <div class="modal-body">
+                确认审核拒绝？
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button  type="button" class="btn btn-primary" data-dismiss="modal" ng-click="audit(-1)">确认</button>
+            </div>
+        </div>
+    </div>
+</div>

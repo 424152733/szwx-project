@@ -1,0 +1,85 @@
+<div ng-controller="qScheduleController">
+    <div class="container" style="padding-top: 5px">
+        <p class="w-management-title"><b>单 位 管 理</b> > <span>课 表 查 询</span></p>
+        <div style="margin-top: 30px">
+            <form  role="form" class="form-horizontal" name="schedule_form" style="margin-top: 20px" novalidate>
+                <div class="form-group query-schedule-course">
+                    <label class="col-xs-4 control-label text-right"  style="padding:7px 0 0 0" >课号 / 课程名称:</label>
+                    <div class="col-xs-8">
+                        <input  type="text" ng-model="courseName" ng-focus="infocus=true" ng-change="searchCourse()" class="form-control" required/>
+                    </div>
+                    <ul ng-show="showCourse" style="height: 200px;overflow: scroll">
+                        <li ng-repeat="info in result track by $index">
+                            <p class="text-left" ng-click="selectedCourse(info)" style="margin-bottom: 5px" ng-bind-html="toHtml(info.nameStr)"></p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-4 control-label text-right" style="padding:7px 0 0 0" for="startTime">请选择开始时间:</label>
+                    <div class="col-xs-8">
+                        <div id="start" class="input-group date dataPicker">
+                            <input type="text"  class=" form-control" ng-model="startTime" id="startTime" name="startTime" required/>
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-4 control-label text-right" style="padding:7px 0 0 0" for="endTime">请选择结束时间:</label>
+                    <div class="col-xs-8">
+                        <div id="end" class="input-group date dataPicker">
+                            <input type="text" class=" form-control" id="endTime" ng-model="endTime" name="endTime" required/>
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class=" col-xs-4 control-label text-right" style="padding:7px 0 0 0">快&nbsp;&nbsp;速&nbsp;&nbsp;选&nbsp;&nbsp;择:</label>
+                    <div class="col-xs-8">
+                        <select ng-model="time" class="form-control">
+                          <option value="">--请选择--</option>
+                          <option value="2">全部</option>
+                          <option value="0">本月</option>
+                          <option value="-1">上月</option>
+                          <option value="1">下月</option>
+                        </select>
+                    </div>
+                </div>
+                <button  ng-click="quickQuery()" class="btn btn-primary btn-lg"  ng-disabled="schedule_form.$invalid" style="width: 100%">立即查询</button>
+            </form>
+        </div>
+    </div>
+    <div class="w-container" ng-show="result.ifNull">
+    <h5>无查询结果</h5>
+    </div>
+    <!--  <div class="w-container" ng-show="result.ifNull">
+        <h5>查询结果</h5>
+        <div class="w-container-list query-schedule-result">
+            <p style="color:#55739D">
+                <b>[201551-089] 2013公需课 组合1<br>(教师职业到的规范-新时期广东生态文明建设)</b>
+            </p>
+            <p>
+            <div><span>上课地点:</span></div>
+            <div><span>深圳大学南小区</span></div>
+            </p>
+            <p>
+            <div><span>开通时间:</span></div>
+            <div>
+                <span>2015/10/18(9:00-11:30)</span><br/>
+                <span>2015/10/18(9:00-11:30)</span>
+            </div>
+            </p>
+            <p>
+            <div><span>上课学员:</span></div>
+            <div>
+                <span>甲同学(13524151541)</span><br/>
+                <span>甲同学(13524151541)</span><br/>
+                <span>甲同学(13524151541)</span>
+            </div>
+            </p>
+        </div>
+    </div>-->
+</div>

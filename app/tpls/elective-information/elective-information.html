@@ -1,0 +1,36 @@
+  <div  class="w-container" ng-cloak>
+    <div class="w-select-container">
+      <label class="control-label pull-left">期号：</label>
+      <select  class="form-control" change-select>
+        <option ng-repeat="item in planInfos" value="{{item.value}}">{{item.name}}</option>
+      </select>
+    </div>
+    <div ng-if="courses.length > 0">
+      <div ng-repeat="course in courses">
+        <a  class="my-course-list" href="#/course/{{course.semeCourseId}}">
+          <b ng-if="course.status == 5" style="color: #6facff">预览</b>
+          <b ng-if="course.status == 1 && course.semeChoStatus == 1" style="color: #FF8787">选课中</b>
+          <b ng-if="course.semeChoStatus == 2" style="color: #FF8787">已结束</b>
+          <b ng-if="course.status == 2" style="color: #FF8787">已取消</b>
+          <div class="pull-right">
+            <span ng-if="course.choiceStatus == 2" class="payment">已缴费</span>
+            <span ng-if="course.choiceStatus == 8" class="admin-reject">管理员已拒绝</span>
+            <span ng-if="course.choiceStatus == 9" class="quit-course">取消选课</span>
+            <span ng-if="course.choiceStatus == 1" class="w-unit-payment">待单位缴费</span>
+            <span ng-if="course.choiceStatus == 0" class="w-unit-accept">待单位审批</span>
+          </div>
+          <p style="margin-top: 5px">
+            <span>20151-089 2013公需课 {{course.courseName}}</span><br/>
+            <span>{{course.discription}}- {{course.courseType}}</span>
+          </p>
+          <p style="color: #949494">开课时间-结束时间：{{course.classStartTime | date: 'yyyy-MM-dd'}} ~ {{course.classEndTime | date: 'yyyy-MM-dd'}}</p>
+        </a>
+      </div>
+
+    </div>
+    <div ng-if="courses.length == 0">
+      <h1>你没有选择任何课程</h1>
+    </div>
+  </div>
+
+

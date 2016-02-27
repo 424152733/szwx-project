@@ -1,0 +1,23 @@
+
+<div ng-controller="aaController">
+    <div style="text-align: center;padding: 30px 0;margin-top: 70px">
+        <p>请输入要申请/转让管理员权限的成员</p>
+        <div class="admin-application-transfer">
+            <input type="text" name="inputName" ng-model="inputName" ng-focus="infocus=true" ng-change="search()">
+            <ul ng-show="showResult" style="overflow: scroll">
+                <li ng-repeat="info in result track by $index">
+                    <p class="text-left" ng-click="selected(info)" style="margin-bottom: 5px" ng-bind-html="toHtml(info.nameStr)"></p>
+                </li>
+            </ul>
+            <div ng-show="showInfo">
+                <div  style="padding-top: 30px">
+                    <img src="/szwx-project/app/images/header.jpg" class="img-rounded"/><br/>
+                    <div style="padding-top: 10px;font-weight: bold">{{adminInfo.name}}</div>
+                    <div>{{adminInfo.mobileNo}}</div>
+                </div>
+                <button class="w-btn-default" style="float: left" ng-click="adminApply()">提交申请</button>
+                <button class="w-btn-default" style="float: left" ng-click="adminTransfer()">提交转让</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,9 @@
+
+<div class="w-container" ng-controller="aaController">
+    <ul class="nav nav-pills w-management-title">
+        <p><b>单 位 管 理</b> > <span>管理员申请/转让</span></p>
+        <li class="w-nav-active" style="width: 49%" tabs><a ui-sref="adminApplication.applicationTransfer">申请转让</a></li>
+        <li class="w-nav-default" style="width: 50%" tabs><a ui-sref="adminApplication.historyTransfer" ng-click="getAdminTransferList()">历史申请/转让</a></li>
+    </ul>
+    <div ui-view="content"></div>
+</div>
